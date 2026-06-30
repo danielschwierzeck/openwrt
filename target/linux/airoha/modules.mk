@@ -37,5 +37,3 @@ define KernelPackage/pwm-airoha/description
 endef
 
 $(eval $(call KernelPackage,pwm-airoha))
-
-
