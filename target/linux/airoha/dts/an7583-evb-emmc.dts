@@ -265,6 +265,7 @@
 
 &gsw_phy1_led0 {
 	status = "okay";
+	function = LED_FUNCTION_LAN;
 	active-low;
 };
 
@@ -281,6 +282,7 @@
 
 &gsw_phy2_led0 {
 	status = "okay";
+	function = LED_FUNCTION_LAN;
 	active-low;
 };
 
@@ -297,6 +299,7 @@
 
 &gsw_phy3_led0 {
 	status = "okay";
+	function = LED_FUNCTION_LAN;
 	active-low;
 };
 
@@ -313,5 +316,6 @@
 
 &gsw_phy4_led0 {
 	status = "okay";
+	function = LED_FUNCTION_LAN;
 	active-low;
 };
