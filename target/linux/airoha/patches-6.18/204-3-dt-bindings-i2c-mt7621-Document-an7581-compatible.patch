@@ -1,0 +1,45 @@
+From: Christian Marangi <ansuelsmth@gmail.com>
+Subject: [PATCH v3 3/5] dt-bindings: i2c: mt7621: Document an7581 compatible
+Date: Wed, 20 May 2026 00:32:45 +0200
+
+Airoha SoC implement the same Mediatek logic for I2C bus with the only
+difference of not having a dedicated reset line to reset it.
+
+Add a dedicated compatible for the Airoha AN7581 SoC and reject the
+unsupported property.
+
+Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
+---
+ .../bindings/i2c/mediatek,mt7621-i2c.yaml          | 14 +++++++++++++-
+ 1 file changed, 13 insertions(+), 1 deletion(-)
+
+--- a/Documentation/devicetree/bindings/i2c/mediatek,mt7621-i2c.yaml
++++ b/Documentation/devicetree/bindings/i2c/mediatek,mt7621-i2c.yaml
+@@ -14,7 +14,9 @@ allOf:
+ 
+ properties:
+   compatible:
+-    const: mediatek,mt7621-i2c
++    enum:
++      - airoha,an7581-i2c
++      - mediatek,mt7621-i2c
+ 
+   reg:
+     maxItems: 1
+@@ -38,6 +40,16 @@ required:
+   - "#address-cells"
+   - "#size-cells"
+ 
++if:
++  properties:
++    compatible:
++      contains:
++        const: airoha,an7581-i2c
++then:
++  properties:
++    resets: false
++    reset-names: false
++
+ unevaluatedProperties: false
+ 
+ examples:
